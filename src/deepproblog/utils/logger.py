@@ -83,7 +83,7 @@ class Logger(object):
         with open(filename, "w") as f:
             f.write(str(self))
 
-    def read_from_file(self, filename: Union[PathLike[str], str]):
+    def read_from_file(self, filename):
         headers = None
         with open(filename) as f:
             for line in f:
