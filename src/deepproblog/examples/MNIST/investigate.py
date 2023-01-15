@@ -20,7 +20,7 @@ train_set = addition(N, "train")
 test_set = addition(N, "test")
 path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition_exact_1.pth"
 network = MNIST_Net()
-network.load_state_dict(torch.load(PATH))
+network.load_state_dict(torch.load(path))
 print(network)
 
 
