@@ -24,7 +24,7 @@ network = MNIST_Net()
 net = Network(network, "mnist_net", batching=True)
 print(net.name)
 model = Model("models/addition.pl", [net])
-network.load_state_dict(torch.load(path))
+network.load_state_dict(torch.load(path)['model_state_dict'])
 
 
 #model.set_engine(ExactEngine(model), cache=True)
