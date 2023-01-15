@@ -18,7 +18,7 @@ name = "addition_{}_{}".format(method, N)
 
 train_set = addition(N, "train")
 test_set = addition(N, "test")
-path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition_exact_1.pth"
+path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/parameters"
 network = MNIST_Net()
 
 net = Network(network, "mnist_net", batching=True)
