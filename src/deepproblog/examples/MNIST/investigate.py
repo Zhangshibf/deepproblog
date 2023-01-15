@@ -22,7 +22,7 @@ path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot
 network = MNIST_Net()
 network.load_state_dict(torch.load(path)['model_state_dict'])
 print(network)
-print(‘DONE)
+print("done")
 
 #model.set_engine(ExactEngine(model), cache=True)
 #model.add_tensor_source("train", MNIST_train)
