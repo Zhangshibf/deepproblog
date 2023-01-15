@@ -18,19 +18,13 @@ name = "addition_{}_{}".format(method, N)
 
 train_set = addition(N, "train")
 test_set = addition(N, "test")
-
-network = MNIST_Net()
-
-pretrain = 0
-if pretrain is not None and pretrain > 0:
-    network.load_state_dict(torch.load("models/pretrained/all_{}.pth".format(pretrain)))
-net = Network(network, "mnist_net", batching=True)
-net.optimizer = torch.optim.Adam(network.parameters(), lr=1e-3)
-
-model = Model("models/addition.pl", [net])
 path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition_exact_1.pth"
-model.load_state_dict(torch.load(PATH))
-print(model)
+network = MNIST_Net()
+network.load_state_dict(torch.load(PATH))
+print(network)
+
+
+
 #model.set_engine(ExactEngine(model), cache=True)
 #model.add_tensor_source("train", MNIST_train)
 #model.add_tensor_source("test", MNIST_test)
