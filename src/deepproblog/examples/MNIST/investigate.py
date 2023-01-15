@@ -20,12 +20,9 @@ train_set = addition(N, "train")
 test_set = addition(N, "test")
 path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/mnist_net"
 network = MNIST_Net()
-
-net = Network(network, "mnist_net", batching=True)
-print(net.name)
-model = Model("models/addition.pl", [net])
 network.load_state_dict(torch.load(path)['model_state_dict'])
-
+print(network)
+print(‘DONE)
 
 #model.set_engine(ExactEngine(model), cache=True)
 #model.add_tensor_source("train", MNIST_train)
