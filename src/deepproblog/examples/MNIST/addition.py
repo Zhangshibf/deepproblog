@@ -18,6 +18,7 @@ name = "addition_{}_{}".format(method, N)
 
 train_set = addition(N, "train")
 test_set = addition(N, "test")
+print(test_set)
 
 network = MNIST_Net()
 
