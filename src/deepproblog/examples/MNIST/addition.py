@@ -12,7 +12,7 @@ from deepproblog.network import Network
 from deepproblog.train import train_model
 
 method = "exact"
-N = 2
+N = 3
 
 name = "addition_{}_{}".format(method, N)
 
