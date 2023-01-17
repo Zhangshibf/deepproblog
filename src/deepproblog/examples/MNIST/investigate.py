@@ -1,23 +1,32 @@
-from json import dumps
-
 import torch
-
-from deepproblog.dataset import DataLoader
-from deepproblog.engines import ApproximateEngine, ExactEngine
-from deepproblog.evaluate import get_confusion_matrix
-from deepproblog.examples.MNIST.data import MNIST_train, MNIST_test, addition
+from pathlib import Path
+import torchvision
+import torchvision.transforms as transforms
 from deepproblog.examples.MNIST.network import MNIST_Net
-from deepproblog.model import Model
-from deepproblog.network import Network
-from deepproblog.train import train_model
+_DATA_ROOT = Path(__file__).parent
 
-method = "exact"
-N = 1
+transform = transforms.Compose(
+    [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
+)
 
-name = "addition_{}_{}".format(method, N)
+datasets = {
+    "train": torchvision.datasets.MNIST(
+        root=str(_DATA_ROOT), train=True, download=True, transform=transform
+    ),
+    "test": torchvision.datasets.MNIST(
+        root=str(_DATA_ROOT), train=False, download=True, transform=transform
+    ),
+}
 
-train_set = addition(N, "train")
-test_set = addition(N, "test")
+class MNIST_Images(object):
+    def __init__(self, subset):
+        self.subset = subset
+
+    def __getitem__(self, item):
+        return datasets[self.subset][int(item[0])][0]
+
+MNIST_test = MNIST_Images("test")
+
 path = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/mnist_net"
 network = MNIST_Net()
 network.load_state_dict(torch.load(path)['model_state_dict'])
