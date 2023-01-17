@@ -12,12 +12,14 @@ from deepproblog.network import Network
 from deepproblog.train import train_model
 
 method = "exact"
-N = 1
+N = 2
 
 name = "addition_{}_{}".format(method, N)
 
 train_set = addition(N, "train")
 test_set = addition(N, "test")
+print(train_set)
+print("--------------------------------------")
 print(test_set)
 
 network = MNIST_Net()
