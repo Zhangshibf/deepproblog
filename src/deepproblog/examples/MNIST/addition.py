@@ -12,7 +12,7 @@ from deepproblog.network import Network
 from deepproblog.train import train_model
 
 method = "exact"
-num = [1,2,3,4]
+num = [1,2,3,4,5]
 for N in num:
     N = int(N)
     name = "addition_{}_{}".format(method, N)
