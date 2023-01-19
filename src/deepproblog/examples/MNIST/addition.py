@@ -12,7 +12,7 @@ from deepproblog.network import Network
 from deepproblog.train import train_model
 
 method = "exact"
-num = [1,2,3,4,5]
+num = [1,2]
 for N in num:
     N = int(N)
     name = "addition_{}_{}".format(method, N)
@@ -30,13 +30,7 @@ for N in num:
     net.optimizer = torch.optim.Adam(network.parameters(), lr=1e-3)
 
     model = Model("models/addition.pl", [net])
-    if method == "exact":
-        model.set_engine(ExactEngine(model), cache=True)
-    elif method == "geometric_mean":
-        model.set_engine(
-            ApproximateEngine(model, 1, ApproximateEngine.geometric_mean, exploration=False)
-        )
-
+    model.set_engine(ExactEngine(model), cache=True)
     model.add_tensor_source("train", MNIST_train)
     model.add_tensor_source("test", MNIST_test)
 
