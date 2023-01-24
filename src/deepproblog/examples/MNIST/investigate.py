@@ -17,6 +17,8 @@ if __name__ == "__main__":
 
     datasets = {"test": torchvision.datasets.MNIST(root=str(_DATA_ROOT), train=False, download=True, transform=transform)}
     print(datasets)
+    for i in datasets:
+        print(i)
     path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net"]
     for i in path:
         network = MNIST_Net()
