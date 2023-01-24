@@ -16,7 +16,7 @@ if __name__ == "__main__":
         [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
     )
 
-    datasets = {"test": torchvision.datasets.MNIST(root=str(_DATA_ROOT), train=False, download=True, transform=transform)}
+    datasets = {"test": torchvision.datasets.MNIST(root="/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/dataset", train=False, download=True, transform=transform)}
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100, shuffle=True)
     for i in test_loader:
         print(i)
