@@ -6,6 +6,7 @@ from deepproblog.examples.MNIST.network import MNIST_Net
 from deepproblog.examples.MNIST.data import MNIST_train, MNIST_test, addition
 
 _DATA_ROOT = Path(__file__).parent
+print(str(_DATA_ROOT))
 def test_mnistnet(cnn,dataset):
     pass
 
@@ -19,6 +20,7 @@ if __name__ == "__main__":
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100, shuffle=True)
     for i in test_loader:
         print(i)
+        break
     path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net"]
     for i in path:
         network = MNIST_Net()
