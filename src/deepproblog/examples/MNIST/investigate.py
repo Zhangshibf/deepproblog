@@ -19,6 +19,8 @@ def test_mnistnet(cnn,test_loader):
 
     print('Accuracy of the network on the test images: %d %%' % (100 * correct / total))
 
+    return 1,2,3
+
 
 if __name__ == "__main__":
     transform = transforms.Compose(
