@@ -44,4 +44,7 @@ if __name__ == "__main__":
     for i in path:
         network = MNIST_Net()
         network.load_state_dict(torch.load(i)['model_state_dict'])
-        accuracy,loss,cm = test_mnistnet(network,test_loader)
+        accuracy,recall,cm = test_mnistnet(network,test_loader)
+        print("Accuracy: {}".format(accuracy))
+        print("Recall: {}".format(recall))
+        print("Confusion Matrix: {}".format(cm))
