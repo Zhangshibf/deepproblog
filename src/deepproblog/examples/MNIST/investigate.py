@@ -18,7 +18,7 @@ def test_mnistnet(cnn,test_loader):
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
             confmat = ConfusionMatrix(task="multiclass", num_classes=10)
-            cm = confmat(preds, target)
+            cm = confmat(outputs, labels)
             print(cm)
 
     print('Accuracy of the network on the test images: %d %%' % (100 * correct / total))
