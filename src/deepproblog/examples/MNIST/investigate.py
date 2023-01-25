@@ -3,7 +3,7 @@ from pathlib import Path
 import torchvision
 import torchvision.transforms as transforms
 from deepproblog.examples.MNIST.network import MNIST_Net
-from torchmetrics import ConfusionMatrix
+from torchmetrics import ConfusionMatrix, Recall
 from deepproblog.examples.MNIST.data import MNIST_train, MNIST_test, addition
 
 def test_mnistnet(cnn,test_loader):
@@ -25,9 +25,8 @@ def test_mnistnet(cnn,test_loader):
             cm.append(confmat(outputs, labels))
             accuracy.append((100 * correct / total))
 
-            # calculate recall for each class
-            for class_idx in range(10):
-                recall.append(confmat.recall(class_idx))
+            rec = Recall(task="multiclass", average='micro', num_classes=10)
+            recall.append(rec(outputs,labels))
 
     return accuracy,recall,cm
 
