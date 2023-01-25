@@ -10,20 +10,26 @@ def test_mnistnet(cnn,test_loader):
     cnn.eval()
     correct = 0
     total = 0
+    cm = list()
+    accuracy = list()
+    recall = list()
     with torch.no_grad():
         for data in test_loader:
+            #actually there is only one epoch
             images, labels = data
             outputs = cnn(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
             confmat = ConfusionMatrix(task="multiclass", num_classes=10)
-            cm = confmat(outputs, labels)
-            print(cm)
+            cm.append(confmat(outputs, labels))
+            accuracy.append((100 * correct / total))
 
-    print('Accuracy of the network on the test images: %d %%' % (100 * correct / total))
+            # calculate recall for each class
+            for class_idx in range(10):
+                recall.append(confmat.recall(class_idx))
 
-    return 1,2,3
+    return accuracy,recall,cm
 
 
 if __name__ == "__main__":
