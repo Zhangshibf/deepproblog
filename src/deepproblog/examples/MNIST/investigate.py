@@ -15,18 +15,25 @@ def test_mnistnet(cnn,test_loader):
     recall = list()
     with torch.no_grad():
         for data in test_loader:
-            #actually there is only one epoch
+            #actually there is only one epoch...
             images, labels = data
             outputs = cnn(images)
+
+            #confusion matrix
+            confmat = ConfusionMatrix(task="multiclass", num_classes=10)
+            cm.append(confmat(outputs, labels))
+
+            #accuracy and recall
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
-            confmat = ConfusionMatrix(task="multiclass", num_classes=10)
-            cm.append(confmat(outputs, labels))
             accuracy.append((100 * correct / total))
 
             rec = Recall(task="multiclass", average='micro', num_classes=10)
             recall.append(rec(outputs,labels))
+
+            #accuracy and recall per class
+
 
     return accuracy,recall,cm
 
