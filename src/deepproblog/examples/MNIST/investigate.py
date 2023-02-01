@@ -32,9 +32,6 @@ def test_mnistnet(cnn,test_loader):
             rec = Recall(task="multiclass", average='micro', num_classes=10)
             recall.append(rec(outputs,labels))
 
-            #accuracy and recall per class
-
-
     return accuracy,recall,cm
 
 
