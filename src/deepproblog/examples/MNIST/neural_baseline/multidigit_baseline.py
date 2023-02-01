@@ -117,7 +117,7 @@ for N in [14900]:
     # for N in [150, 1500, 14000]:
     batch_size = 2
     test_period = 5000
-    log_period = N // (batch_size * 10)
+    log_period = 100
     train_dataset = addition(2, "train").subset(N)
     val_dataset = addition(2, "train").subset(N, N + 100)
     trainloader = torch.utils.data.DataLoader(
