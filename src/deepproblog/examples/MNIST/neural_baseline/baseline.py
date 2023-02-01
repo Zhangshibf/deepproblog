@@ -126,7 +126,7 @@ if __name__ == "__main__":
         train_dataset = addition(1, "train").subset(N)
         val_dataset = addition(1, "train").subset(N, N + 100)
         for batch_size in [4]:
-            test_period = 100
+            test_period = N // batch_size
             log_period = 100
             trainloader = torch.utils.data.DataLoader(
                 train_dataset, batch_size=batch_size, shuffle=True
