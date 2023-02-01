@@ -170,3 +170,4 @@ if __name__ == "__main__":
                 net.state_dict(), "../models/pretrained/addition_{}.pth".format(N)
             )
             log.comment("Accuracy\t{}".format(test_addition(test_dataset)))
+            log.write_to_file("log/{}_{}".format(modelname, N))
