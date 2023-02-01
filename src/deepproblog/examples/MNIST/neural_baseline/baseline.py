@@ -126,7 +126,7 @@ if __name__ == "__main__":
         train_dataset = addition(1, "train").subset(N)
         val_dataset = addition(1, "train").subset(N, N + 100)
         for batch_size in [4]:
-            test_period = N // batch_size
+            test_period = 100
             log_period = 100
             trainloader = torch.utils.data.DataLoader(
                 train_dataset, batch_size=batch_size, shuffle=True
@@ -140,7 +140,7 @@ if __name__ == "__main__":
             stop_condition = StopOnPlateau("Accuracy", patience=5)
             train_obj = Train(log)
             j = 1
-            while not stop_condition.is_stop(train_obj):
+            while i<15000:
                 print("Epoch {}".format(j))
                 for i1, i2, l in trainloader:
                     i1 = i1[0]
