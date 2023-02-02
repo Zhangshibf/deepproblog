@@ -37,7 +37,7 @@ if __name__ == "__main__":
         [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
     )
 
-    datasets = {"test": torchvision.datasets.MNIST(root="/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/dataset", train=False, download=True, transform=transform)}
+    datasets = {"test": torchvision.datasets.MNIST(root="./dataset", train=False, download=True, transform=transform)}
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100000, shuffle=True)
 #single digit addition CNN, multi digir addition CNN, single digit baseline,
     path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net"]
