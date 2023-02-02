@@ -50,7 +50,6 @@ if __name__ == "__main__":
         network = MNIST_Net()
         network.load_state_dict(torch.load(i)['model_state_dict'])
         accuracy,recall,cm = test_mnistnet(network,test_loader)
-        print("Model name: {}".format(name[i]))
         print("Accuracy: {}".format(accuracy))
         print("Recall: {}".format(recall))
         print("Confusion Matrix: {}".format(cm))
