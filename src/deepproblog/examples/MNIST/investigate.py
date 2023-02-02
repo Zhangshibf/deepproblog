@@ -4,7 +4,6 @@ import torchvision
 import torchvision.transforms as transforms
 from deepproblog.examples.MNIST.network import MNIST_Net
 from torchmetrics import ConfusionMatrix, Recall
-from deepproblog.examples.MNIST.data import MNIST_train, MNIST_test, addition
 
 
 def test_mnistnet(cnn,test_loader):
@@ -24,14 +23,11 @@ def test_mnistnet(cnn,test_loader):
             confmat = ConfusionMatrix(task="multiclass", num_classes=10)
             cm.append(confmat(outputs, labels))
 
-            #accuracy and recall
+            #accuracy
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
             accuracy.append((100 * correct / total))
-
-
-
 
     return accuracy,cm
 
