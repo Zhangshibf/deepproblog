@@ -42,8 +42,8 @@ if __name__ == "__main__":
 
     datasets = {"test": torchvision.datasets.MNIST(root="/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/dataset", train=False, download=True, transform=transform)}
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100000, shuffle=True)
-#torch.Size([100, 1, 28, 28]) image
-    path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net"]
+#single digit addition CNN, multi digir addition CNN, single digit baseline,
+    path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/models/pretrained/addition_500.pth"]
     for i in path:
         network = MNIST_Net()
         network.load_state_dict(torch.load(i)['model_state_dict'])
