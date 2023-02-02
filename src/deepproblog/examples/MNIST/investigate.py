@@ -40,9 +40,10 @@ if __name__ == "__main__":
     datasets = {"test": torchvision.datasets.MNIST(root="./dataset", train=False, download=True, transform=transform)}
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100000, shuffle=True)
 #single digit addition CNN, multi digir addition CNN, single digit baseline,
-    path = ["/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition1/mnist_net","/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/snapshot/addition2/mnist_net"]
+    path = ["./models/mnist_net_single","./models/mnist_net_multi"]
     name = ["Single digit CNN","Multi digit CNN"]
-    for i in path:
+    for i,j in zip(path,name):
+        print(j)
         network = MNIST_Net()
         network.load_state_dict(torch.load(i)['model_state_dict'])
         accuracy,cm = test_mnistnet(network,test_loader)
