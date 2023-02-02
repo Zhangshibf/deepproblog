@@ -1,8 +1,19 @@
-#MNIST addition experiments
-To run the single-digit and the multi-digit Addition experiment
+# MNIST addition experiments
+To run the single-digit and the multi-digit Addition experiments
 
 ```
 python addition.py
 ```
 
-To 
+To train the baseline model of the single-digit and the multi-digit Addition experiments
+
+
+```
+python 
+```
+
+To analyze the neural component of models trained in the single-digit and the multi-digit Addition experiment
+
+```
+python investigate.py
+```
