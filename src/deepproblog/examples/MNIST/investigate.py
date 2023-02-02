@@ -126,21 +126,3 @@ if __name__ == "__main__":
         print("Accuracy: {}".format(accuracy))
         print("Recall: {}".format(recall))
         print("Confusion Matrix: {}".format(cm))
-
-    baseline1 = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/models/pretrained/addition_500.pth"
-    baseline_model= Separate_Baseline()
-    baseline_model.load_state_dict(torch.load(baseline1))
-    accuracy, recall, cm = test_mnistnet(baseline_model, test_loader)
-    print("Single digit baseline")
-    print("Accuracy: {}".format(accuracy))
-    print("Recall: {}".format(recall))
-    print("Confusion Matrix: {}".format(cm))
-
-    baseline2 = "/home/CE/zhangshi/mlfornlp/mlnlp/src/deepproblog/examples/MNIST/models/pretrained/blabla"
-    baseline_model= Separate_Baseline()
-    baseline_model.load_state_dict(torch.load(baseline1))
-    accuracy, recall, cm = test_mnistnet(baseline_model, test_loader)
-    print("Multi digit baseline")
-    print("Accuracy: {}".format(accuracy))
-    print("Recall: {}".format(recall))
-    print("Confusion Matrix: {}".format(cm))
