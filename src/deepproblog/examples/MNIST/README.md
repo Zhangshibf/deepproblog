@@ -10,7 +10,6 @@ To train the baseline model of the single-digit Addition experiment
 
 ```
 python neural_baseline/baseline.py
-
 ```
 
 To train the baseline model of the multi-digit Addition experiment
