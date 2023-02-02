@@ -9,7 +9,7 @@ To train the baseline model of the single-digit and the multi-digit Addition exp
 
 
 ```
-python 
+python neural_baseline/
 ```
 
 To analyze the neural component of models trained in the single-digit and the multi-digit Addition experiment
