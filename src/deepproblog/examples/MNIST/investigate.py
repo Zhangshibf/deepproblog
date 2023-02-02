@@ -13,7 +13,7 @@ def test_mnistnet(cnn,test_loader):
     total = 0
     cm = list()
     accuracy = list()
-    recall = list()
+
     with torch.no_grad():
         for data in test_loader:
             #actually there is only one epoch...
@@ -30,10 +30,10 @@ def test_mnistnet(cnn,test_loader):
             correct += (predicted == labels).sum().item()
             accuracy.append((100 * correct / total))
 
-            rec = Recall(task="multiclass", average='micro', num_classes=10)
-            recall.append(rec(outputs,labels))
 
-    return accuracy,recall,cm
+
+
+    return accuracy,cm
 
 
 if __name__ == "__main__":
@@ -49,7 +49,6 @@ if __name__ == "__main__":
     for i in path:
         network = MNIST_Net()
         network.load_state_dict(torch.load(i)['model_state_dict'])
-        accuracy,recall,cm = test_mnistnet(network,test_loader)
+        accuracy,cm = test_mnistnet(network,test_loader)
         print("Accuracy: {}".format(accuracy))
-        print("Recall: {}".format(recall))
         print("Confusion Matrix: {}".format(cm))
