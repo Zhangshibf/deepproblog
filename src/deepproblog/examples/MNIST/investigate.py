@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     datasets = {"test": torchvision.datasets.MNIST(root="./dataset", train=False, download=True, transform=transform)}
     test_loader = torch.utils.data.DataLoader(datasets['test'], batch_size=100000, shuffle=True)
-#single digit addition CNN, multi digir addition CNN, single digit baseline,
+
     path = ["./models/mnist_net_single","./models/mnist_net_multi"]
     name = ["Single digit CNN","Multi digit CNN"]
     for i,j in zip(path,name):
