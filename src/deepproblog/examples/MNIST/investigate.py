@@ -27,8 +27,6 @@ def test_mnistnet(cnn,test_loader):
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
-            print(correct)
-            print(total)
             accuracy.append((100 * correct / total))
 
     return accuracy,cm
